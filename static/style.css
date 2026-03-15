@@ -1,0 +1,124 @@
+/* ========== GLOBAL ========== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 18px 40px;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #ffd369;
+}
+
+/* ========== MAIN CONTAINER ========== */
+.container {
+    width: 90%;
+    margin: 40px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* ========== HEADINGS ========== */
+h1 {
+    margin-top: 0;
+    color: #333;
+    font-size: 28px;
+}
+
+/* ========== TABLE ========== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+}
+
+th {
+    background: #111827;
+    color: white;
+    padding: 14px;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+tr:hover {
+    background: #f9fafb;
+    transition: 0.3s;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+    padding: 8px 16px;
+    background: #6366f1;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #4f46e5;
+}
+
+.btn-danger {
+    background: #ef4444;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
+/* ========== FORMS ========== */
+form {
+    margin-top: 20px;
+}
+
+form label {
+    font-weight: 600;
+    display: block;
+    margin-top: 15px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 5px rgba(99,102,241,0.5);
+}
+
+form button {
+    margin-top: 20px;
+}

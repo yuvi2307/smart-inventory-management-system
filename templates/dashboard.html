@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 style="margin-bottom:30px;">Dashboard Overview</h1>
+
+<div class="cards">
+
+    <div class="card stat-card">
+        <h3>Total Products</h3>
+        <p class="stat-number">{{ total_products or 0 }}</p>
+    </div>
+
+    <div class="card stat-card">
+        <h3>Total Units Sold</h3>
+        <p class="stat-number">{{ total_units_sold or 0 }}</p>
+    </div>
+
+    <div class="card stat-card">
+        <h3>Total Revenue</h3>
+        <p class="stat-number">₹ {{ total_revenue or 0 }}</p>
+    </div>
+
+    <div class="card stat-card">
+        <h3>Top Product</h3>
+        <p class="stat-number">
+            {% if top_product %}
+                {{ top_product.name }}
+            {% else %}
+                No Sales Yet
+            {% endif %}
+        </p>
+    </div>
+
+</div>
+
+<div class="card" style="margin-top:30px;">
+    <h2 style="margin-bottom:20px;">Sales Chart</h2>
+    <div style="position: relative; height: 300px;">
+        <canvas id="salesChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('salesChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ chart_labels|default([])|tojson }},
+            datasets: [{
+                label: 'Units Sold',
+                data: {{ chart_data|default([])|tojson }},
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+</script>
+
+<style>
+.stat-card {
+    border-top: 5px solid #4f46e5;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #4f46e5;
+}
+</style>
+
+{% endblock %}

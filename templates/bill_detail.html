@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .invoice-box {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 15px rgba(0,0,0,.1);
+            background: white;
+        }
+
+        .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .invoice-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .print-btn {
+            margin-bottom: 20px;
+        }
+
+        @media print {
+            .print-btn, .navbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="{{ url_for('products') }}">Products</a>
+    <a href="{{ url_for('sales') }}">Sales</a>
+</div>
+
+<div class="invoice-box">
+
+    <div class="print-btn">
+        <button onclick="window.print()" class="btn">🖨 Print Invoice</button>
+    </div>
+
+    <div class="invoice-header">
+        <div>
+            <div class="invoice-title">INVOICE</div>
+            <p><strong>Bill ID:</strong> {{ bill.id }}</p>
+            <p><strong>Date:</strong> {{ bill.created_at }}</p>
+        </div>
+
+        <div>
+            <p><strong>Smart Inventory System</strong></p>
+            <p>Retail Billing Application</p>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+        </tr>
+
+        {% for item in bill.items %}
+        <tr>
+            <td>{{ item.product.name }}</td>
+            <td>₹ {{ item.price_at_sale }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>₹ {{ item.price_at_sale * item.quantity }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2 style="text-align:right; margin-top:30px;">
+        Total Amount: ₹ {{ bill.total_amount }}
+    </h2>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Sales History</h1>
+
+<table>
+    <tr>
+        <th>Bill ID</th>
+        <th>Date</th>
+        <th>Total Amount</th>
+        <th>Action</th>
+    </tr>
+
+    {% for bill in bills %}
+    <tr>
+        <td>#{{ bill.id }}</td>
+        <td>{{ bill.created_at.strftime('%d-%m-%Y %H:%M') }}</td>
+        <td>₹ {{ bill.total_amount }}</td>
+        <td>
+            <a href="{{ url_for('bill_detail', bill_id=bill.id) }}" class="btn">
+                View
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
