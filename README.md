@@ -55,7 +55,7 @@ smart-inventory-management-system
 
 1. Clone the repository
 
-git clone https://github.com/yuvi2307/smart-inventory-management-system.git
+git clone https://github.com/yuvi2307/Techrossum.git
 
 2. Go to the project folder
 
